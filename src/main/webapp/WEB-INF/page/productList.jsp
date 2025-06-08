@@ -41,8 +41,9 @@
 					<th>Manufacturer</th>
 					<th>View <security:authorize access="hasAnyRole('ROLE_USER')">
 					/ Add to Cart
-					</security:authorize> <!-- 					views only to the admin --> <security:authorize
-							 access="hasAnyRole('ROLE_ADMIN')">
+					</security:authorize> 
+					<!-- views only to the admin --> 
+					<security:authorize access="hasAnyRole('ROLE_ADMIN')">
 					/Edit/Delete
 					</security:authorize>
 					</th>
@@ -61,24 +62,26 @@
 						<td>${prod.unitStock}</td>
 						<td style="width: 180px">${prod.productDescription}</td>
 						<td>${prod.productManufacturer}</td>
-						<td ng-controller="myController"><a
-							href="getProductById/${prod.productId}" class="btn btn-info"
+						<td ng-controller="myController">
+							<a href="getProductById/${prod.productId}" class="btn btn-info"
 							role="button"> <span class="glyphicon glyphicon-info-sign"></span></a>
 
-							<!-- 						view only for user --> <security:authorize
-								 access="hasAnyRole('ROLE_USER')">
-								<a href="#" ng-click="addToCart(${prod.productId})"
-									class="btn btn-primary" style="margin-left: 5px"> <span
-									class="glyphicon glyphicon-shopping-cart"></span></a>
-							</security:authorize> <!-- 						view only to the admin --> <security:authorize
-								access="hasAnyRole('ROLE_ADMIN')">
+							<!-- view only for user --> 
+							<security:authorize access="hasAnyRole('ROLE_USER')">								
+								<a href="cart/add/${prod.productId}" ng-click="addToCart(${prod.productId})"
+								class="btn btn-primary" style="margin-left: 5px"> <span
+								class="glyphicon glyphicon-shopping-cart"></span></a>
+							</security:authorize> 
+							<!-- view only to the admin --> 
+							<security:authorize access="hasAnyRole('ROLE_ADMIN')">
 								<a href="admin/product/editProduct/${prod.productId}"
 									class="btn btn-success" style="margin-left: 5px"> <span
 									class="glyphicon glyphicon-edit"></span></a>
 								<a href="admin/delete/${prod.productId}" class="btn btn-danger"
 									style="margin-left: 5px"> <span
 									class="glyphicon glyphicon-trash"></span></a>
-							</security:authorize></td>
+							</security:authorize>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
