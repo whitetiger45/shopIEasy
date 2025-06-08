@@ -1,3 +1,5 @@
+drop database ecommercedb;
+create database ecommercedb;
 use ecommercedb;
 
 drop table if exists authorities;
@@ -28,5 +30,6 @@ drop table if exists shippingAddress;
 create table shippingAddress (shippingAddressId int auto_increment, address longtext, city longtext, state longtext, zipcode longtext, country longtext, primary key(shippingAddressId));
 
 drop table if exists users;
-create table users (userId int auto_increment, emailId longtext, password longtext, enabled bool, primary key(userId));
-
+create table users (userId int auto_increment, emailId longtext, password longtext, enabled boolean, primary key(userId));
+insert into users values(1, "admin@shopieasy.com","admin",1);
+insert into authorities values(1, "admin@shopieasy.com","ROLE_ADMIN");
