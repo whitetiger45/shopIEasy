@@ -25,19 +25,19 @@
 		<security:authorize access="hasRole('ROLE_USER')">
 			<a href="<spring:url value="/cart/getCartById" />"><span class="glyphicon glyphicon-shopping-cart"></a>
 		</security:authorize>
-		<a href="<c:url value="/login"/>"><span
+		<a href="<c:url value="/userProfile"/>"><span
 			class="glyphicon glyphicon-user"></a> <a href="#"><span
 			class="glyphicon glyphicon-envelope"></a>
 	</div>
 	<div class="footer-left">
 
 		<p class="footer-links">
-			<a href="<c:url value="/index1"/>">Home</a> · <a
-				href="<c:url value="/aboutus"/>">About Us</a> · <a href="<c:url value="/getAllProducts" />">Product
-				List</a> · <a href="<c:url value="/contactus"/>">Contact Us</a>
+			<a href="<c:url value="/index1"/>">Home</a> ï¿½ <a
+				href="<c:url value="/aboutus"/>">About Us</a> ï¿½ <a href="<c:url value="/getAllProducts" />">Product
+				List</a> ï¿½ <a href="<c:url value="/contactus"/>">Contact Us</a>
 		</p>
 
-		<p>Created by Mohammed Ismail.A ShopIeasy &copy; 2017</p>
+		<p>ShopIeasy &copy; 2025</p>
 	</div>
 	</footer>
 </body>

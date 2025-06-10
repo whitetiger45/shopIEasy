@@ -3,6 +3,8 @@ package com.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,12 +14,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.model.Customer;
 import com.model.Queries;
+import com.service.CustomerService;
 import com.service.QueriesService;
 
 @Controller
 public class HomeController {
-
+	
+	@Autowired
+	private CustomerService customerService;
+	
 	@RequestMapping({ "/index", "/index1" })
 	public String sayIndex() {
 		return "index1";
@@ -42,6 +49,16 @@ public class HomeController {
 	public String sayAbout() {
 		return "aboutUs";
 	}
+	
+	@RequestMapping("/userProfile")
+	public ModelAndView getUserProfile(ModelAndView model) {
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String emailId = user.getUsername();
+		Customer customer = customerService.getCustomerByemailId(emailId);
+		model.addObject("customer", customer);
+		model.setViewName("userProfile");
+		return model;
+	}
 
 	@Autowired
 	private QueriesService queryService;
@@ -60,7 +77,7 @@ public class HomeController {
 
 		queryService.addQuery(query);
 		model.addAttribute("querySuccess",
-				"Thank you, Your Message stored in our Server we will contact through corresponding Mail");
+				"Thank you, we have received your message and will be in touch soon!");
 		return "login";
 
 	}

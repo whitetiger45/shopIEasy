@@ -44,8 +44,9 @@
 							<th>Manufacturer</th>
 							<th>View <security:authorize ifAnyGranted="ROLE_USER">
 					/ Add to Cart
-					</security:authorize> <!-- 					views only to the admin --> <security:authorize
-									ifAnyGranted="ROLE_ADMIN">
+					</security:authorize> 
+					<!-- views only to the admin -->
+					<security:authorize	ifAnyGranted="ROLE_ADMIN">
 					/Edit/Delete
 					</security:authorize>
 							</th>
@@ -54,8 +55,8 @@
 					<tbody>
 
 						<tr ng-repeat="b in products | filter:searchCondition">
-							<td style="width: 171px"><img
-								src="<c:url value="../resource/images/products/{{b.productId}}.jpg"/>"
+							<td style="width: 171px">
+								<img src="<c:url value="../resource/images/products/{{b.productId}}.jpg"/>"
 								style="width: 100px; height: 90px;" {{b.productName}}"  /></td>
 							<td>{{b.productId}}</td>
 							<td>{{b.productCategory}}</td>
@@ -66,12 +67,15 @@
 							<td>{{b.productManufacturer}}</td>
 							<td><a href="getProductById/{{b.productId}}"
 								class="btn btn-info" role="button"> <span
-									class="glyphicon glyphicon-info-sign"></span></a> <!-- 						view only for user 
+									class="glyphicon glyphicon-info-sign"></span></a> 
+								<!-- view only for user 
 								<security:authorize ifAnyGranted="ROLE_USER">
 									<a href="#" ng-click="addToCart(${b.productId})" class="btn btn-primary"
 										style="margin-left: 5px"> <span
 										class="glyphicon glyphicon-shopping-cart"></span></a>
-								</security:authorize> --> <!-- 						view only to the admin -->
+								</security:authorize> 
+								-->
+								<!-- view only to the admin -->
 								<security:authorize ifAnyGranted="ROLE_ADMIN">
 									<a href="admin/product/editProduct/{{b.productId}}"
 										class="btn btn-success" style="margin-left: 5px"> <span
@@ -79,7 +83,8 @@
 									<a href="admin/delete/{{b.productId}}" class="btn btn-danger"
 										style="margin-left: 5px"> <span
 										class="glyphicon glyphicon-trash"></span></a>
-								</security:authorize></td>
+								</security:authorize>
+							</td>
 						</tr>
 					</tbody>
 				</table>

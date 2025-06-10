@@ -2,7 +2,7 @@ var app = angular.module("myapp", []).controller(
 		"myController",
 		function($scope, $http) {
 
-			var BASE_PATH = "http://localhost:8080";
+			var BASE_PATH = "http://localhost:8080/shopieasy";
 
 			$scope.getProductList = function() {
 				$http.get(BASE_PATH + "/getProductsList")
