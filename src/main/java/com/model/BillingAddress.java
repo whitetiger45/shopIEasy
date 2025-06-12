@@ -35,11 +35,11 @@ public class BillingAddress implements Serializable {
 		this.customer = customer;
 	}
 
-	public String getBillindAddressId() {
+	public String getBillingAddressId() {
 		return billingAddressId;
 	}
 
-	public void setBillindAddressId(String billingAddressId) {
+	public void setBillingAddressId(String billingAddressId) {
 		this.billingAddressId = billingAddressId;
 	}
 

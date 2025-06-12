@@ -9,8 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.model.Authorities;
+import com.model.BillingAddress;
 import com.model.Cart;
 import com.model.Customer;
+import com.model.Product;
+import com.model.ShippingAddress;
 import com.model.User;
 
 @Repository
@@ -46,6 +49,38 @@ public class CustomerDaoImpl implements CustomerDao {
 		cart.setCustomer(customer);
 		session.save(customer);
 		session.save(authorities);
+		session.flush();
+		session.close();
+	}
+	
+	public void updateCustomer(Customer customer, String emailId, String shippingAddressId, String billingAddressId) {
+		System.out.println("Updating customer in dao");
+		Session session = sessionFactory.openSession();
+		Customer oCustomer = getCustomerByemailId(emailId);
+		/* update email address */
+		if(!customer.getUsers().getEmailId().equals(emailId))
+			oCustomer.getUsers().setEmailId(customer.getUsers().getEmailId());
+		/* update first and last name */
+		if(!customer.getFirstName().equals(oCustomer.getFirstName()))
+			oCustomer.setFirstName(customer.getFirstName());
+		if(!customer.getLastName().equals(oCustomer.getLastName()))
+			oCustomer.setLastName(customer.getLastName());
+		/* update phone number */
+		if(!customer.getCustomerPhone().equals(oCustomer.getCustomerPhone()))
+			oCustomer.setCustomerPhone(customer.getCustomerPhone());
+		/* update billing address */
+		if(!customer.getBillingAddress().equals(oCustomer.getBillingAddress())) {
+			oCustomer.setBillingAddress(customer.getBillingAddress());
+			oCustomer.getBillingAddress().setBillingAddressId(billingAddressId);
+			oCustomer.getBillingAddress().setCustomer(customer);
+		}		
+		/* update shipping address */
+		if(!customer.getShippingAddress().equals(oCustomer.getShippingAddress())) {
+			oCustomer.setShippingAddress(customer.getShippingAddress());
+			oCustomer.getShippingAddress().setShippingAddressId(shippingAddressId);
+			oCustomer.getShippingAddress().setCustomer(customer);
+		}
+		session.merge(oCustomer);		
 		session.flush();
 		session.close();
 	}
