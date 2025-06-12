@@ -23,6 +23,11 @@ public class CustomerServiceImpl implements CustomerService {
 	public void addCustomer(Customer customer) {
 		customerDao.addCustomer(customer);
 	}
+	
+	@Transactional
+	public void updateCustomer(Customer customer, String emailId, String shippingAddressId, String billingAddressId) {
+		customerDao.updateCustomer(customer,emailId,shippingAddressId,billingAddressId);
+	}
 
 	public List<Customer> getAllCustomers() {
 

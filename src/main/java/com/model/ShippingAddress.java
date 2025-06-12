@@ -28,12 +28,12 @@ public class ShippingAddress implements Serializable {
 	@OneToOne(mappedBy = "shippingAddress")
 	private Customer customer;
 
-	public String getBillingAddressId() {
+	public String getShippingAddressId() {
 		return shippingAddressId;
 	}
 
-	public void setBillingAddressId(String billingAddressId) {
-		this.shippingAddressId = billingAddressId;
+	public void setShippingAddressId(String shippingAddressId) {
+		this.shippingAddressId = shippingAddressId;
 	}
 
 	public String getAddress() {
