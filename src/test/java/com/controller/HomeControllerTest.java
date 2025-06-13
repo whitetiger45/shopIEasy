@@ -22,9 +22,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 public class HomeControllerTest {
-
-//        @Autowired
-//        private MockMvc mockMvc;
         
         public MockMvc setup(){
 //        	@Autowired
@@ -38,7 +35,7 @@ public class HomeControllerTest {
             				.setViewResolvers(viewResolver)
             				.build();
             return mockMvc;
-        }       
+        }
 
         @Test
         public void index1IsOk() throws Exception {
