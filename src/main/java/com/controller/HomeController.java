@@ -71,13 +71,18 @@ public class HomeController {
 
 	@RequestMapping(value = "/contactus", method = RequestMethod.POST)
 	public String addQuery(@Valid @ModelAttribute(value = "contact") Queries query, Model model, BindingResult result) {
-
+		String successMessage = "Thank you, we have received your message and will be in touch soon!";
+		String errorMessage = "There was an error saving your query, please try again. We apologize for the inconvenience!";
+		
 		if (result.hasErrors())
 			return "contactUs";
-
-		queryService.addQuery(query);
-		model.addAttribute("querySuccess",
-				"Thank you, we have received your message and will be in touch soon!");
+		
+		if(queryService != null) {
+			queryService.addQuery(query);
+			model.addAttribute("querySuccess",successMessage);
+		} else {
+			model.addAttribute("querySuccess",errorMessage);
+		}
 		return "login";
 
 	}

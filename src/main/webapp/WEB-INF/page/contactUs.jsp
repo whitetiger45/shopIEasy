@@ -31,13 +31,13 @@
 <script src="<c:url value="/resource/js/scripts.js"/>"></script>
 <style>
 body {
-	background-image: url("<c:url value="/ resource/ images/ 1.jpg "/>");
+	background-image: url("<c:url value="/resource/images/1.jpg"/>");
 }
 </style>
 
 </head>
 <body>
-
+	<%@ include file="navbar.jsp"%>
 	<!-- Top content -->
 	<div class="top-content">
 
@@ -48,8 +48,7 @@ body {
 						<strong>ShopIeasy</strong> Contact Form
 					</h1>
 					<div class="description">
-						<p>If you need any help from Us please contact us. Write your
-							Queries.</p>
+						<p>If you need any help from us please get in touch!</p>
 					</div>
 				</div>
 			</div>
@@ -80,10 +79,9 @@ body {
 								<label class="sr-only" for="contact-message">Message</label>
 								<form:textarea path="message" class="contact-message form-control" placeholder="Message..." required="required"></form:textarea>
 							</div>
-							<button type="submit" class="btn">Send message</button>
 							<button style="float: right;" type="button" class="btn"
-								onclick="window.location.href='<c:url value="/index1" />'">Back
-								to Home</button>
+								onclick="window.location.href='<c:url value="/index1" />'">Cancel</button>
+							<button type="submit" class="btn">Send message</button>
 						</form:form>
 					</div>
 				</div>
@@ -91,6 +89,6 @@ body {
 		</div>
 	</div>
 
-
+	<%@ include file="footer.jsp"%>
 </body>
 </html>
