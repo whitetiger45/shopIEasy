@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartResolver;
-//import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.model.Product;
@@ -49,11 +49,11 @@ public class ProductController {
 	// maxupload size is for image size should not be maximum than 10240000
 
 	@Bean
-//	public MultipartResolver multipartResolver() {
-//		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-//		multipartResolver.setMaxUploadSize(10240000);
-//		return multipartResolver;
-//	}
+	public MultipartResolver multipartResolver() {
+		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+		multipartResolver.setMaxUploadSize(10240000);
+		return multipartResolver;
+	}
 
 	// Request Mapping
 

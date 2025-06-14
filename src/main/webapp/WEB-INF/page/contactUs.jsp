@@ -11,6 +11,7 @@
 <title>Contact Us</title>
 <link rel="icon" type="image/x-icon" href="<c:url value="/resource/images/favicon1.png"/>" />
 <!-- CSS -->
+<!--
 <link rel="stylesheet"
 	href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
 <link rel="stylesheet"
@@ -21,6 +22,7 @@
 <link rel="stylesheet"
 	href="<c:url value="/resource/css/form-elements.css"/>">
 <link rel="stylesheet" href="<c:url value="/resource/css/style.css"/>">
+-->
 
 <!--  JavaScript -->
 <script
@@ -29,6 +31,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="<c:url value="/resource/js/retina-1.1.0.min.js"/>"></script>
 <script src="<c:url value="/resource/js/scripts.js"/>"></script>
+
 <style>
 body {
 	background-image: url("<c:url value="/resource/images/1.jpg"/>");
@@ -36,8 +39,8 @@ body {
 </style>
 
 </head>
-<body>
-	<%@ include file="navbar.jsp"%>
+<%@ include file="navbar.jsp"%>
+<body>	
 	<!-- Top content -->
 	<div class="top-content">
 
@@ -63,7 +66,7 @@ body {
 							<i class="fa fa-envelope"></i>
 						</div>
 					</div>
-					<div class="form-bottom contact-form">
+					<div class="form-bottom contact-form" style="padding-bottom: 54px;">
 						<c:url value="/contactus" var="url"></c:url>
 						<form:form role="form" method="post" action="${url}"
 							commandName="contact">
@@ -77,18 +80,19 @@ body {
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="contact-message">Message</label>
-								<form:textarea path="message" class="contact-message form-control" placeholder="Message..." required="required"></form:textarea>
+								<form:textarea path="message" style="width: 638px; height: 267px;" class="contact-message form-control" placeholder="Message..." required="required"></form:textarea>
 							</div>
-							<button style="float: right;" type="button" class="btn"
-								onclick="window.location.href='<c:url value="/index1" />'">Cancel</button>
-							<button type="submit" class="btn">Send message</button>
+							<button style="float: right;size: 20%" type="submit" class="btn">Send message</button>
+							<button style="float: left;" type="button" class="btn"
+								onclick="window.location.href='<c:url value="/index1" />'">Cancel</button>							
 						</form:form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
+	<br>
+	<br>
 	<%@ include file="footer.jsp"%>
 </body>
 </html>
