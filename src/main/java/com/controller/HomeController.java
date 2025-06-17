@@ -83,7 +83,7 @@ public class HomeController {
 		} else {
 			model.addAttribute("querySuccess",errorMessage);
 		}
-		return "login";
+		return "index1";
 
 	}
 }

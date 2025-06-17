@@ -20,23 +20,30 @@
 <body>
 	<footer class="footer-distributed">
 	<div class="footer-right">
-		<a href="<c:url value="/index1"/>"><span
-			class="glyphicon glyphicon-home"></span></a>
+		<a href="<c:url value="/getAllProducts2"/>">
+			<span class="glyphicon glyphicon-home"></span>
+		</a>
 		<security:authorize access="hasRole('ROLE_USER')">
-			<a href="<spring:url value="/cart/getCartById" />"><span class="glyphicon glyphicon-shopping-cart"></a>
+			<a href="<spring:url value="/cart/getCartById" />">
+				<span class="glyphicon glyphicon-shopping-cart">
+			</a>
 		</security:authorize>
-		<a href="<c:url value="/userProfile"/>"><span
-			class="glyphicon glyphicon-user"></a> <a href="#"><span
-			class="glyphicon glyphicon-envelope"></a>
+		<security:authorize access="hasRole('ROLE_USER')">
+			<a href="<c:url value="/userProfile"/>">
+				<span class="glyphicon glyphicon-user">
+			</a>
+		</security:authorize>
+		<a href="<c:url value="/contactus"/>">
+			<span class="glyphicon glyphicon-envelope">			
+		</a>
 	</div>
 	<div class="footer-left">
-
 		<p class="footer-links">
-			<a href="<c:url value="/index1"/>">Home</a> � <a
-				href="<c:url value="/aboutus"/>">About Us</a> � <a href="<c:url value="/getAllProducts" />">Product
-				List</a> � <a href="<c:url value="/contactus"/>">Contact Us</a>
+			<a href="<c:url value="/getAllProducts2"/>">Home</a>
+			<a href="<c:url value="/aboutus"/>">About Us</a>
+			<a href="<c:url value="/getAllProducts"/>">Product	List</a>
+			<a href="<c:url value="/contactus"/>">Contact Us</a>
 		</p>
-
 		<p>ShopIeasy &copy; 2025</p>
 	</div>
 	</footer>

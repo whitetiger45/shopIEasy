@@ -68,9 +68,14 @@ public class ProductController {
 	*/
 	//		Normal ProductList view 
 	  @RequestMapping("/getAllProducts") public ModelAndView getAllProducts() {
-	  List<Product> products = productService.getAllProducts(); return new
-	  ModelAndView("productList", "products", products); }
-	 
+		  List<Product> products = productService.getAllProducts();
+		  return new ModelAndView("productList", "products", products); 
+	  }
+	  
+	  @RequestMapping("/getAllProducts2") public ModelAndView getAllProducts2() {
+		  List<Product> products = productService.getAllProducts();
+		  return new ModelAndView("productGrid.2", "products", products); 
+	  }	 
 	
 	// this is used for getting the product by productId
 
@@ -85,8 +90,7 @@ public class ProductController {
 
 		// Here the Path class is used to refer the path of the file
 
-		Path path = Paths.get("C:/Users/Ismail/workspace/ShoppingCart/src/main/webapp/WEB-INF/resource/images/products/"
-				+ productId + ".jpg");
+		Path path = Paths.get("src/main/webapp/WEB-INF/resource/images/products/" + productId + ".jpg");
 
 		if (Files.exists(path)) {
 			try {
@@ -121,9 +125,7 @@ public class ProductController {
 		productService.addProduct(product);
 		MultipartFile image = product.getProductImage();
 		if (image != null && !image.isEmpty()) {
-			Path path = Paths
-					.get("C:/Users/Ismail/workspace/ShoppingCart/src/main/webapp/WEB-INF/resource/images/products/"
-							+ product.getProductId() + ".jpg");
+			Path path = Paths.get("src/main/webapp/WEB-INF/resource/images/products/" + product.getProductId() + ".jpg");
 
 			try {
 				image.transferTo(new File(path.toString()));

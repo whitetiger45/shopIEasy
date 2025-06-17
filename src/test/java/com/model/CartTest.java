@@ -58,14 +58,11 @@ public class CartTest {
 		Assertions.assertEquals(18.99,cartItem1.getProduct().getProductPrice());
 		Assertions.assertNotNull(cartItem2);
 		Assertions.assertEquals(20.99,cartItem2.getProduct().getProductPrice());
-		List<CartItem> cartItems = Arrays.asList(cartItem0,cartItem1);		
+		List<CartItem> cartItems = Arrays.asList(cartItem0,cartItem1);	
 		cart = new Cart();
 		cart.setCartItem(cartItems);
 		Assertions.assertNotNull(cart.getCartItem());
-		double totalOfCartItemPrices = cartItems.stream()
-										.mapToDouble( cartItem -> cartItem
-																	.getPrice() )
-										.sum();
+		double totalOfCartItemPrices = cartItems.stream().mapToDouble( cartItem -> cartItem.getPrice() ).sum();
 		cart.setTotalPrice(totalOfCartItemPrices);
 		Assertions.assertEquals(totalOfCartItemPrices,cart.getTotalPrice());
 	}

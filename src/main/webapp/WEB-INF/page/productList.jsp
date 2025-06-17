@@ -52,9 +52,9 @@
 			<tbody>
 				<c:forEach items="${products}" var="prod">
 					<tr>
-						<td style="width: 171px"><img
+						<td style="width: 171px"><a href="getProductById/${prod.productId}"><img
 							src="<c:url value="/resource/images/products/${prod.productId}.jpg"/>"
-							style="width: 100px; height: 90px;" ${prod.productName}"  /></td>
+							style="width: 100px; height: 90px;" ${prod.productName}"/></a></td>
 						<td>${prod.productId}</td>
 						<td>${prod.productCategory}</td>
 						<td>${prod.productName}</td>
@@ -71,7 +71,7 @@
 								<a href="cart/add/${prod.productId}" ng-click="addToCart(${prod.productId})"
 								class="btn btn-primary" style="margin-left: 5px"> <span
 								class="glyphicon glyphicon-shopping-cart"></span></a>
-							</security:authorize> 
+							</security:authorize>
 							<!-- view only to the admin --> 
 							<security:authorize access="hasAnyRole('ROLE_ADMIN')">
 								<a href="admin/product/editProduct/${prod.productId}"
