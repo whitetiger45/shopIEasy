@@ -27,7 +27,7 @@ public class HomeController {
 	
 	@RequestMapping({ "/index", "/index1" })
 	public String sayIndex() {
-		return "index1";
+		return "productGrid.2";
 	}
 
 	@RequestMapping("/hello")
@@ -83,7 +83,7 @@ public class HomeController {
 		} else {
 			model.addAttribute("querySuccess",errorMessage);
 		}
-		return "index1";
+		return "productGrid.2";
 
 	}
 }
